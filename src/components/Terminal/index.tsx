@@ -1,19 +1,21 @@
 import React, { CSSProperties, useState } from "react";
+import { ScriptProps } from "../../types";
 
-const Terminal = () => {
+const Terminal = (scriptProps: ScriptProps) => {
+	const { script } = scriptProps;
 	const [editing, setEditing] = useState(false);
 
-	const TerminalText = editing ? (
-		<span>apples are the best flavor</span>
-	) : null;
+	const TerminalText = editing ? script : "";
 
 	return (
 		<div style={styles.container}>
 			<button
-                style={styles.buttonStyle}
+				style={styles.buttonStyle}
 				onClick={() => setEditing(!editing)}
-			>run code</button>
-			{TerminalText}
+			>
+				run code
+			</button>
+			<text>{TerminalText}</text>
 		</div>
 	);
 };
