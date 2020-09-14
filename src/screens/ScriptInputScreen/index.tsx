@@ -22,6 +22,6 @@ export default ScriptInputScreen;
 const styles = {
 	container: {
 		display: "flex",
-		flexDirection: "column",
+		flexDirection: "row",
 	} as CSSProperties,
 };
