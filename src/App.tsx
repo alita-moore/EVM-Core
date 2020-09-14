@@ -1,7 +1,8 @@
 import React from 'react';
+import ScriptInputScreen from "./screens/ScriptInputScreen"
 
 const App = () => (
-    <div>hello world</div>
+    <ScriptInputScreen/>
 )
 
 export default App;
