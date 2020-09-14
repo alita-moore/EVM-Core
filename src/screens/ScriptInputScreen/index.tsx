@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, CSSProperties } from "react";
 import ScriptInput from "../../components/ScriptInput";
 import Terminal from "../../components/Terminal";
 import { ScriptProps } from "../../types";
@@ -10,7 +10,7 @@ const ScriptInputScreen = () => {
 	const _ScriptInput = ScriptInput(scriptProps);
 	const _Terminal = Terminal(scriptProps);
 	return (
-		<div>
+		<div style={styles.container}>
 			{_ScriptInput}
 			{_Terminal}
 		</div>
@@ -18,3 +18,10 @@ const ScriptInputScreen = () => {
 };
 
 export default ScriptInputScreen;
+
+const styles = {
+	container: {
+		display: "flex",
+		flexDirection: "column",
+	} as CSSProperties,
+};
