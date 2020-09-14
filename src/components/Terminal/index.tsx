@@ -1,14 +1,19 @@
 import React, { CSSProperties, useState } from "react";
 import { ScriptProps } from "../../types";
+import { XTerm } from "xterm-for-react";
 
-const Terminal = (scriptProps: ScriptProps) => {
+const TerminalComponent = (scriptProps: ScriptProps) => {
 	const { script } = scriptProps;
 	const [editing, setEditing] = useState(false);
 
 	const TerminalText = editing ? script : "";
+	// const terminal = new Terminal();
+	// const fitAddon = new FitAddon();
+	// terminal.loadAddon(fitAddon);
+	// terminal.open(document.getElementById("terminal"));
 
 	return (
-		<div style={styles.container}>
+		<div id="terminal" style={styles.container}>
 			<button
 				style={styles.buttonStyle}
 				onClick={() => setEditing(!editing)}
@@ -16,11 +21,12 @@ const Terminal = (scriptProps: ScriptProps) => {
 				run code
 			</button>
 			<text>{TerminalText}</text>
+			<XTerm />
 		</div>
 	);
 };
 
-export default Terminal;
+export default TerminalComponent;
 
 const styles = {
 	container: {
