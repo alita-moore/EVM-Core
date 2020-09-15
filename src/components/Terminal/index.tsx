@@ -27,25 +27,28 @@ export default TerminalComponent;
 
 const XTermInteractive = () => {
 	const xtermRef = useRef(null);
-	const [input, setInput] = useState("");
 
 	const options: ITerminalOptions = {
 		cursorBlink: true,
 	};
 
 	useEffect(() => {
-		xtermRef.current.terminal.writeln(
-			"Hello, and welcome to Huff Playground"
+		xtermRef.current.terminal.write(
+			"\n Hello, and welcome to Huff Playground \r\n \t version 1.0 \r\n\r\n (jsx) $ "
 		);
 	}, []);
 
-	const handleKey = (e) => {
-		if (e.domEvent.key === "Backspace") {
-			setInput(input.slice(0, input.length - 1));
+	const handleKey = (e: { key; domEvent }) => {
+		const key = e.key;
+		const ev = e.domEvent;
+
+		if (ev.key === "Backspace") {
+			xtermRef.current.terminal.write("\b \b");
+		} else if (ev.key === "Enter") {
+			xtermRef.current.terminal.write("\r\n (jsx) $ ");
 		} else {
-			setInput(input + e.key);
+			xtermRef.current.terminal.write(key);
 		}
-		console.log(input);
 	};
 
 	return (
